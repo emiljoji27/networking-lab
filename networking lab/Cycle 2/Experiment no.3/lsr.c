@@ -38,35 +38,30 @@ void main()
         int visited [50] = {0};
         int solution [50] = {-1};
         //initialize the distance vector
-        
-        
+        printf("---------------------------\n");
         for(int i=0;i<n;i++){
-            for(int j=0;j<n;j++){
-                printf("%d ",arr[i][j]);
-            }
-            printf("\n");
+        for(int j=0;j<n;j++){
+            printf("%d ",arr[i][j]);
+          }
+         printf("\n");
         }
 
         printf("Initial Distance Vector: ");
-        for(int i=0;i<n;i++)
-        {
+        for(int i=0;i<n;i++){
             dist_vect[i] = arr[src][i] == -1 ? INT_MAX : arr[src][i];
             printf("%d(%d) ",arr[src][i],dist_vect[i]);
         }
-        printf("\n");
-         
         solution[0] = src;
         visited[src] = 1;
-
+        printf("\n");
         for(int i=0; i<n-1;i++){
            int j = smallest_not_visited(dist_vect,visited,i,n);
            visited[j] = 1;
-
-           printf("\nDistance vector on %d: ",j);
-           for(int i=0; i<n;i++) printf("%d ",dist_vect[i]);
+           printf("Distance vector on %d: ",j);
+           for(int i=0; i<n;i++) 
+               printf("%d ",dist_vect[i]);
            printf("\n");
-
-            for(int k = 0; k<n; k++){
+           for(int k = 0; k<n; k++){
                if(visited[k]!=1) {
                    int sum = (arr[j][k] == -1) ? INT_MAX : dist_vect[j]+arr[j][k];
                    if(dist_vect[k] > sum ){
@@ -76,10 +71,11 @@ void main()
             }
             solution[i+1] = j;
         }
-        printf("Dijistra on point %d \n",src);
+        printf("Dijistra on point %d : ",src);
         for(int i=0;i<n;i++){ 
             printf("%d (%d) ",solution[i],dist_vect[solution[i]]);
         }
+        printf("\n");
         printf("\n");
     }
 }
