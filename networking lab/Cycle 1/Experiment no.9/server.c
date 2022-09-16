@@ -40,17 +40,18 @@ void main()
     {
     		if(recvfrom(server_fd, &code, sizeof(int), 0, (struct sockaddr*) &cli_addr, &len) < 0) 
                  print_err("Receive failed!");
-            else if (fork() == 0) {
+            else if (fork() == 0) 
+            {
 			     printf("Received time request.\n");
 			
-			time_t now = time(0);
-			char* str = ctime(&now);
-			
-			if(sendto(server_fd, str, (strlen(str) + 1) * sizeof(char), 0, (struct sockaddr*) &cli_addr, len) < 0) 
-                print_err("Sending failed");
-            else 
-				printf("Time reply sent.\n");
-			
+			     time_t now = time(0);
+			     char* str = ctime(&now);
+			 
+			     if(sendto(server_fd, str, (strlen(str) + 1) * sizeof(char), 0, (struct sockaddr*) &cli_addr, len) < 0) 
+                        print_err("Sending failed");
+                 else 
+				        printf("Time reply sent.\n");
+			    
     		}
     	}
     	

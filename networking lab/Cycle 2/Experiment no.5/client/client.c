@@ -60,9 +60,8 @@ void ftp_upload(int client_fd)
 	} else {
 		str1[0] = '\0';
 		
-		while(fgets(str, 100, fp) != NULL) {
+		while(fgets(str, 100, fp) != NULL)
 			strcat(str1, str);
-		}
 		
 		if(send(client_fd, str1, 1000 * sizeof(char), 0) <= 0) {
 			printf("UPLOAD failed!\n");

@@ -55,14 +55,13 @@ void* serverRecv(void* data)
        if(j != d.i && d.status[j] != 0)
         {
           char str1[120];
-	  sprintf(str1, "Client %d: ", d.i + 1);
-	  strcat(str1, str);
-	  if(send(d.client_fd[j], str1, (strlen(str1) + 1) * sizeof(char), 0) < 0)
-	      err_handle("Send failed!");
-	  else 
-	      printf("Message sent to client %d.\n", j + 1);
-				
-	 }
+	      sprintf(str1, "Client %d: ", d.i + 1);
+	      strcat(str1, str);
+	      if(send(d.client_fd[j], str1, (strlen(str1) + 1) * sizeof(char), 0) < 0)
+	         err_handle("Send failed!");
+	     else 
+	         printf("Message sent to client %d.\n", j + 1);
+		 }
       }
    }
 }
@@ -98,7 +97,7 @@ void main()
   for(int i = 0; i < n; i++) 
   {
     if((client_fd[i] = accept(server_fd, (struct sockaddr*) &address, (socklen_t*) &addrlen)) < 0)
-	err_handle("Connection failed!\n");
+	  err_handle("Connection failed!\n");
     else 
     {
 	printf("Connected to client %d.\n", i+1);

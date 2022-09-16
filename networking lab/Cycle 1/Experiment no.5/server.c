@@ -85,6 +85,7 @@ void main()
 	}
 	
        close(new_socket);
+       close(new_socket1);
        shutdown(server_fd, SHUT_RDWR);
 }
 
